@@ -37,7 +37,9 @@
                     <h:outputText value="#{umAluno.turma}" />
                 </p:column>
                 <p:column headerText="Editar">
-                    <h:button onclick="" value="Editar" />
+                    <h:commandButton action="#{alunoBean.editAluno}" value="Editar">
+                        <f:setPropertyActionListener value="#{umAluno}" target="#{alunoBean.aluno}" />
+                    </h:commandButton>
                 </p:column>
                 <p:column headerText="Excluir">
                     <h:button onclick=""  value="Excluir" />

@@ -7,7 +7,7 @@
              xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
              template="template.xhtml">
     <h:form>
-        <p:fieldset legend="Alunos">
+        <p:fieldset legend="Editar Aluno selecionado">
             <p:panelGrid columns="2">
                 <h:outputLabel value="Nome" />
                 <p:inputText value="#{alunoBean.aluno.nome}" />
@@ -23,28 +23,6 @@
                     <p:commandButton value="Adicionar" action="#{alunoBean.adicionarAluno}" update="@form" />
                 </p:toolbarGroup>
             </p:toolbar>
-            <p:dataTable value="#{alunoBean.alunos}" var="umAluno">             
-                <p:column headerText="Nome" sortBy="#{umAluno.nome}">
-                    <h:outputText value="#{umAluno.nome}" />
-                </p:column>
-                <p:column headerText="Data de Nascimento" sortBy="#{umAluno.nascimento}">
-                    <h:outputText value="#{umAluno.nascimento}" />
-                </p:column>
-                <p:column headerText="Matrícula" sortBy="#{umAluno.matricula}">
-                    <h:outputText value="#{umAluno.matricula}" />
-                </p:column>
-                <p:column headerText="Turma" sortBy="#{umAluno.turma}">
-                    <h:outputText value="#{umAluno.turma}" />
-                </p:column>
-                <p:column headerText="Editar">
-                    <h:commandButton action="#{alunoBean.editAluno}" value="Editar">
-                        <f:setPropertyActionListener value="#{umAluno}" target="#{alunoBean.aluno}" />
-                    </h:commandButton>
-                </p:column>
-                <p:column headerText="Excluir">
-                    <h:button onclick=""  value="Excluir" />
-                </p:column>
-            </p:dataTable>
         </p:fieldset>
     </h:form>
 </ui:decorate>

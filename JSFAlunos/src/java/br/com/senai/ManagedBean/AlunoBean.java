@@ -34,4 +34,8 @@ public class AlunoBean implements Serializable{
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
+    public String editAluno(){
+        return "editar-alunos.xhtml";
+    }
+    
 }
