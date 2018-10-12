@@ -20,7 +20,7 @@
             </p:panelGrid>
             <p:toolbar>
                 <p:toolbarGroup>
-                    <p:commandButton value="Adicionar" action="#{alunoBean.adicionarAluno}" update="@form" />
+                    <p:commandButton value="Adicionar" action="#{alunoBean.adicionarAluno}" update="@form" ajax="false" />
                 </p:toolbarGroup>
             </p:toolbar>
             <p:dataTable value="#{alunoBean.alunos}" var="umAluno">             
@@ -36,13 +36,13 @@
                 <p:column headerText="Turma" sortBy="#{umAluno.turma}">
                     <h:outputText value="#{umAluno.turma}" />
                 </p:column>
-                <p:column headerText="Editar">
+                <p:column headerText="Ações">
                     <h:commandButton action="#{alunoBean.editAluno}" value="Editar">
                         <f:setPropertyActionListener value="#{umAluno}" target="#{alunoBean.aluno}" />
                     </h:commandButton>
-                </p:column>
-                <p:column headerText="Excluir">
-                    <h:button onclick=""  value="Excluir" />
+                    <h:commandButton action="#{alunoBean.excluirAluno}"  value="Excluir" >
+                        <f:setPropertyActionListener value="#{umAluno}" target="#{alunoBean.aluno}" />
+                    </h:commandButton>
                 </p:column>
             </p:dataTable>
         </p:fieldset>

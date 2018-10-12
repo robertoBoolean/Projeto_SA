@@ -1,6 +1,7 @@
 package br.com.senai.ManagedBean;
 
 import br.com.senai.Aluno;
+import br.com.senai.dao.AlunoDao;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,13 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class AlunoBean implements Serializable{
     private Aluno aluno = new Aluno();
-    private List<Aluno> alunos = new ArrayList<>();
+    private AlunoDao alunoDao = new AlunoDao();
+    private List<Aluno> alunos = alunoDao.getAll();
     
     public String adicionarAluno(){
-        alunos.add(aluno);
+        alunoDao.salvar(aluno);
         aluno = new Aluno();
+        alunos = alunoDao.getAll();
         return "gerenciar-alunos.xhtml";
     }
 
@@ -36,6 +39,12 @@ public class AlunoBean implements Serializable{
     }
     public String editAluno(){
         return "editar-alunos.xhtml";
+    }
+    public String excluirAluno(){
+        alunoDao.excluir(aluno);
+        alunos = alunoDao.getAll();
+        aluno = new Aluno();
+        return "gerenciar-alunos.xhtml";
     }
     
 }
