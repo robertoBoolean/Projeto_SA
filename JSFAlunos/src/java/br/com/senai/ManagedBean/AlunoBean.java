@@ -21,6 +21,10 @@ public class AlunoBean implements Serializable{
         alunos = alunoDao.getAll();
         return "gerenciar-alunos.xhtml";
     }
+    public String cancelarAluno(){
+        aluno = new Aluno();
+        return "gerenciar-alunos.xhtml";
+    }
 
     public Aluno getAluno() {
         return aluno;
