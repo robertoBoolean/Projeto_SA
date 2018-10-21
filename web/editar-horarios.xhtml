@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+    
+    <h:form>
+        <p:fieldset legend="Editar Horario">
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Nome"/>
+                <p:inputText value="#{gradeHorarioBean.gradeHorario.nome}"/>
+
+                <p:outputLabel for="horaInicio" value="Começa às" />
+                <p:calendar id="horaInicio" value="#{gradeHorarioBean.gradeHorario.hr_inicio}" pattern="HH:mm" timeOnly="true"/>
+
+                <p:outputLabel for="horaFim" value="Termina às" />
+                <p:calendar id="horaFim" value="#{gradeHorarioBean.gradeHorario.hr_fim}" pattern="HH:mm" timeOnly="true"/>
+            </p:panelGrid>
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Editar" action="#{gradeHorarioBean.adicionarHorario()}" update="@form"/>
+                    <p:commandButton value="Cancelar" action="#{gradeHorarioBean.cancelarHorario()}" update="@form"/>
+                </p:toolbarGroup>
+            </p:toolbar>
+        </p:fieldset>
+    </h:form>
+    
+</ui:decorate>
+

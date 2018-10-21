@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             template="template.xhtml"
+             xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:form>
+        <p:fieldset legend="Grade de Horários">
+            <p:panelGrid columns="2">
+                <h:outputLabel value="Nome"/>
+                <p:inputText value="#{gradeHorarioBean.gradeHorario.nome}" autocomplete="off"/>
+
+                <p:outputLabel for="horaInicio" value="Começa às" />
+                <p:calendar id="horaInicio" value="#{gradeHorarioBean.gradeHorario.hr_inicio}" pattern="HH:mm" timeOnly="true"/>
+
+                <p:outputLabel for="horaFim" value="Termina às" />
+                <p:calendar id="horaFim" value="#{gradeHorarioBean.gradeHorario.hr_fim}" pattern="HH:mm" timeOnly="true"/>
+
+            </p:panelGrid>
+            <p:toolbar>
+                <p:toolbarGroup>
+                    <p:commandButton value="Adicionar" action="#{gradeHorarioBean.adicionarHorario()}" update="@form" ajax="false"/>
+                </p:toolbarGroup>
+            </p:toolbar>
+            <p:dataTable value="#{gradeHorarioBean.horarios}" var="umHorario">
+                <p:column headerText = "Nome" sortBy="#{umHorario.nome}">
+                    <h:outputText value="#{umHorario.nome}"/>
+                </p:column>
+                <p:column headerText = "Começa às" sortBy="#{umHorario.hr_inicio}">
+                    <h:outputText value="#{umHorario.hr_inicio}">
+                       <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText = "Termina às" sortBy="#{umHorario.hr_fim}">
+                    <h:outputText value="#{umHorario.hr_fim}">
+                       <f:convertDateTime pattern="HH:mm" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Ações">
+                    <h:commandButton action="#{gradeHorarioBean.editGradeHorario()}" value="Editar">
+                        <f:setPropertyActionListener value="#{umHorario}" target="#{gradeHorarioBean.gradeHorario}"/>
+                    </h:commandButton>
+                    <h:commandButton action="#{gradeHorarioBean.excluirHorario()}" value="Excluir">
+                        <f:setPropertyActionListener value="#{umHorario}" target="#{gradeHorarioBean.gradeHorario}"/>
+                    </h:commandButton>
+                </p:column>
+            </p:dataTable>
+        </p:fieldset>
+    </h:form>
+</ui:decorate>
+
