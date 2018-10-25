@@ -14,15 +14,17 @@
                 <h:outputLabel value="Nascimento" />
                 <p:inputMask mask="99/99/9999" value="#{alunoBean.aluno.nascimento}" />
                 <h:outputLabel value="Matrícula" />
-                <p:inputMask mask="999" value="#{alunoBean.aluno.matricula}" />
+                <p:inputMask mask="9?99" value="#{alunoBean.aluno.matricula}" />
                 <h:outputLabel value="Turma" />
-                <p:inputMask mask="999" value="#{alunoBean.aluno.turma}" />
+                <p:inputMask mask="9?99" value="#{alunoBean.aluno.turma}" />
             </p:panelGrid>
+            <br/>
             <p:toolbar>
                 <p:toolbarGroup>
                     <p:commandButton value="Adicionar" action="#{alunoBean.adicionarAluno}" update="@form" ajax="false" />
                 </p:toolbarGroup>
             </p:toolbar>
+            <br/>
             <p:dataTable value="#{alunoBean.alunos}" var="umAluno">             
                 <p:column headerText="Nome" sortBy="#{umAluno.nome}">
                     <h:outputText value="#{umAluno.nome}" />
